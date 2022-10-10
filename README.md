@@ -9,4 +9,5 @@ doğru format : C:\Users\mert.inal\Desktop\cake\example.txt<br>
 
 
 # Örnek SS
-![ss](https://user-images.githubusercontent.com/6937664/194864190-d1244bb8-e3af-43ce-9be0-df3acab2abf4.PNG)
+
+![ss](https://user-images.githubusercontent.com/6937664/194873356-977ac0a4-a6be-49f1-beb3-ba9dc7f82b8c.PNG)
