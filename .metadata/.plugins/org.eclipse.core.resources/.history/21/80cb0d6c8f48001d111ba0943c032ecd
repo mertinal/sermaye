@@ -1,0 +1,68 @@
+package sermaye;
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * Worker class that performs operations in another thread.
+ *
+ * @author lkallas
+ */
+public class ThreadWorker implements Runnable {
+
+    private final int id;
+    private volatile Queue workQueue;   //Does this have to volatile??
+    public  volatile boolean shutdown = false;
+    public int workQuantity = 0;
+
+    /**
+     * Class constructor.
+     *
+     * @param threadName Name of the thread for identifying.
+     *
+     */
+    public ThreadWorker(int threadId) {
+        this.id = threadId;
+    }
+
+    /**
+     * Adds items to the queue.
+     *
+     * @param object Object to be added to the queue.
+     */
+
+    
+    public void processSentences(String sentence) {
+    	sentence = sentence.replaceAll("[\\t\\n\\r]+"," ");
+    	sentence = sentence.trim().replaceAll(" +", " ");
+    	String[] arr = sentence.split(" ");
+    	for (String string : arr) {
+    		Multithreading.wordCount++;
+			if(Multithreading.map.get(string) != null){
+				Multithreading.map.put(string,Multithreading.map.get(string)+1);
+			}else {
+				Multithreading.map.put(string,1);
+			}
+		}
+    }
+
+    @Override
+    public void run() {
+    	
+        while (!shutdown) {
+            if (!Multithreading.sentences.isEmpty()) {
+                String item = (String) Multithreading.sentences.peek();
+                processSentences(item);
+                //Process item
+               // System.out.println(" just processed " + item);
+                Multithreading.sentences.remove();
+                workQuantity++;
+            }else {
+            	shutdown = false;
+            }
+        }
+        System.out.println("   ThreadId=" + this.id + ", Count=" + workQuantity);
+    }
+    
+}

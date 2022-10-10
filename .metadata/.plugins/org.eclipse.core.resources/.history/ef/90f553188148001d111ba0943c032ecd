@@ -1,0 +1,48 @@
+package sermaye;
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * Worker class that performs operations in another thread.
+ *
+ * @author lkallas
+ */
+public class ThreadWorker implements Runnable {
+
+    private final int id;
+    private volatile Queue workQueue;   //Does this have to volatile??
+
+    /**
+     * Class constructor.
+     *
+     * @param threadName Name of the thread for identifying.
+     *
+     */
+    public ThreadWorker(int threadId) {
+        this.id = threadId;
+        this.workQueue = new LinkedList();
+    }
+
+    /**
+     * Adds items to the queue.
+     *
+     * @param object Object to be added to the queue.
+     */
+    public synchronized void addToQueue(String object) {
+        workQueue.add(object); //Does it have to be syncronized void
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            if (!workQueue.isEmpty()) {
+                String item = (String) workQueue.peek();
+                //Process item
+                System.out.println(threadName + " just processed " + item);
+                workQueue.remove();
+            }
+        }
+    }
+}

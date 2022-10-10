@@ -1,0 +1,17 @@
+package sermaye;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static String getPathFromUser() {
+		System.out.print("Dosya pathini giriniz");
+		return new Scanner(System.in).next();
+	}
+	public static void main(String[] args) {
+		String path = getPathFromUser();
+		
+
+	}
+
+}

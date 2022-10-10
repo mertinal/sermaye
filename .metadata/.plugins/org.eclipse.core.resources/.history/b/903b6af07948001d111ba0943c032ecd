@@ -1,0 +1,43 @@
+package sermaye;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main extends Thread{
+	
+	private Thread t;
+	private String threadName;
+	
+	
+	public Main(String name) {
+		threadName = name;
+		System.out.println("Creating " + threadName);
+	}
+	
+	
+
+	public static String getPathFromUser() {
+		System.out.println("Dosya pathini giriniz : ");
+		return new Scanner(System.in).next();
+	}
+	
+	public static int threadCount(){
+		int threadCount = 5;
+		System.out.println("Thread count giriniz : ");
+		threadCount = new Scanner(System.in).nextInt();
+		return threadCount;
+	}
+	public static void main(String[] args) {
+		String path = getPathFromUser();
+		int threadCount = threadCount();
+		int counter = 0;
+		List<Thread> threadList = new ArrayList<Thread>();
+		List<String> threadJobList = new ArrayList<String>();
+		for(counter = 0 ; counter < threadCount ; counter ++) {
+			threadList.add(new Thread());
+		}
+		
+	}
+
+}

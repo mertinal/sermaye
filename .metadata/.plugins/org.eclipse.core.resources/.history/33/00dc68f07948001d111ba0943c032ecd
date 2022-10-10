@@ -1,0 +1,48 @@
+package sermaye;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+
+public class Main extends Thread{
+	
+    private static final int NUM_OF_THREADS = 5;
+    private static String name;
+    private static final Map<Integer, ThreadWorker> objectMap = new HashMap<>();
+	
+	public Main(String name) {
+		threadName = name;
+		System.out.println("Creating " + threadName);
+	}
+	
+	
+
+	public static String getPathFromUser() {
+		System.out.println("Dosya pathini giriniz : ");
+		return new Scanner(System.in).next();
+	}
+	
+	public static int threadCount(){
+		int threadCount = 5;
+		System.out.println("Thread count giriniz : ");
+		threadCount = new Scanner(System.in).nextInt();
+		return threadCount;
+	}
+	public static void main(String[] args) {
+		String path = getPathFromUser();
+		int threadCount = threadCount();
+		int counter = 0;
+		List<Thread> threadList = new ArrayList<Thread>();
+		List<String> threadJobList = new ArrayList<String>();
+		for(counter = 0 ; counter < threadCount ; counter ++) {
+			threadList.add(new Thread());
+		}
+		
+	}
+
+}

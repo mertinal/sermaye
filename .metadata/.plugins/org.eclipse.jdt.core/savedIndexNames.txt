@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\mert.inal\Desktop\softtech\.metadata\.plugins\org.eclipse.jdt.core
+578553777.index
+1865797976.index
+4136276794.index
