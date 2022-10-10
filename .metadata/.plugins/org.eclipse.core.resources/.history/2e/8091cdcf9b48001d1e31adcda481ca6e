@@ -89,10 +89,6 @@ public class Multithreading {
 			running = !isFinished;
 
 		}
-		
-		System.out.println("\nSentence Count :" + sentenceCount);
-		System.out.println("Avg. Word Count : " + wordCount/sentenceCount+"\n");
-		
 		List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
 
 		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
